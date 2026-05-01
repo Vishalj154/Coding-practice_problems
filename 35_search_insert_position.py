@@ -5,10 +5,10 @@ class Solution:
         while low <= high:
             mid=(low+high)//2
             if target==nums[mid]:
-                return mid-1
-            elif target < nums[mid] and target > nums[mid-1]:
                 return mid
-            elif target > nums[mid] and target < nums[mid+1]:
-                return mid+1
             elif target < nums[mid]:
                 high=mid-1
+            else:
+                 low=mid+1
+                
+        return low
