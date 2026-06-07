@@ -1,0 +1,13 @@
+class Solution:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        p=1
+        r=len(nums)-1
+        def mergesort(nums,p,r):
+            if p < r:
+                q=(p+r)//2
+                mergesort(nums,p,q)
+                mergesort(nums,q+1,r)
+                merge(nums,p,q,r)
+
+        def merge(nums,p,q,r):
+            
