@@ -1,22 +1,21 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        p=0
-        r=len(nums)-1
+        
 
         def merge(nums,p,q,r):
             n1=q-p+1
             n2=r-q
-            L=[0]*n1
-            R=[0]*n2
+            L=[0]*(n1+1)
+            R=[0]*(n2+1)
             for i in range(0,n1):
-                L[i]=nums[i-p]
+                L[i]=nums[p+i]
             for j in range(0,n2):
-                R[j]=nums[r-q+j]
-            L[n1+1]=float('inf')
-            R[n2+1]=float('inf')
+                R[j]=nums[q+1+j]
+            L[n1]=float('inf')
+            R[n2]=float('inf')
             i=0
             j=0
-            for k in range(0,len(nums)):
+            for k in range(p,r+1):
                 if L[i]<=R[j]:
                     nums[k]=L[i]
                     i=i+1
@@ -30,6 +29,7 @@ class Solution:
                 mergesort(nums,p,q)
                 mergesort(nums,q+1,r)
                 merge(nums,p,q,r)
+        mergesort(nums, 0, len(nums) - 1)
 
         return nums
     
