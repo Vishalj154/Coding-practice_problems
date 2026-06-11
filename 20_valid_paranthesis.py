@@ -7,12 +7,14 @@ class Solution:
 
             if ch=='(' or ch=='{' or ch=='[':
                     stack.append(ch)
-            elif ch==')' and stack[-1]=='(':
-                stack.pop()
-            elif ch=='}' and stack[-1]=='{':
-                stack.pop() 
-            elif ch==']' and stack[-1]=='[':
-                stack.pop()
+            else:
+                if not stack :
+                    return False
+                top=stack[-1]
+                if ch==')' and top=='(' or ch=='}' and top=='{' or ch==']' and top=='[':
+                    stack.pop()
+                else:
+                    return False    
 
             
         if stack:
