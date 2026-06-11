@@ -1,16 +1,16 @@
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
-        stack=[]
+        stack=[-1]
         count=0
-        for ch in s:
-            if ch=='(' or ch=='{' or ch=='[':
-                    stack.append(ch)
+        for i in range(len(s)):
+            if s[i]=='(' :
+                    stack.append(i)
             else:
+                stack.pop()
                 if not stack :
-                    return 0
-                top=stack[-1]
-                if ch==')' and top=='(' or ch=='}' and top=='{' or ch==']' and top=='[':
-                    count+=1
-                    stack.pop()
+                    stack.append(i)
+                else:
+                    count = max(count, i - stack[-1])
+                    
     
-        return count*2
+        return count
