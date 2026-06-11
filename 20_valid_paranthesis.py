@@ -7,11 +7,11 @@ class Solution:
             return False
         for ch in s:
 
-            if ch==')' and '(' not in stack and len(stack)==2:
+            if ch==')' and '(' not in stack and '{' not in stack and '[' not in stack:
                     return False
-            elif ch=='}' and '{' not in stack and len(stack)==2:
+            elif ch=='}' and '{' not in stack and '(' not in stack and '[' not in stack:
                 return False
-            elif ch==']' and '[' not in stack and len(stack)==2:
+            elif ch==']' and '[' not in stack and '(' not in stack and '{' not in stack:
                 return False
             else:
                 return True
