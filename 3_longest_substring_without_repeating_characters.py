@@ -1,11 +1,22 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        long=0
-        count=0
+        ans=0
+        
         for i in range(len(s)):
-            print(s[i])
+            seen=set()
+            for j in range(i,len(s)):
+                if s[j] in seen:
+                    break
+                
+                seen.add(s[j])
+                ans = max(ans, len(seen))
+        
+        
+
+
+        return ans
             
 c=Solution()
-c.lengthOfLongestSubstring("abcabcbb")
+print(c.lengthOfLongestSubstring("pwwkew"))
 
         
