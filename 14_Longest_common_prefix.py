@@ -1,7 +1,5 @@
 class Solution:
     def longestCommonPrefix(self, strs) -> str:
-        seen=[]
-        left=0
         prefix=strs[0]
         for str in strs:
             while str.startswith(prefix)==False:
